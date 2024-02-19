@@ -88,31 +88,45 @@ class Cafe {
   buyProduct(customer_id, product, count){
 
     // Add your code here
-if(product.stock==0 || product.stock<count){
-    return false;
-}
-else{
-    product.stock-=count ;
-    this.balance+=product.price*count;
-    cust_prod= new CustomerProducts(customer_id,product,count);
-    this.customer_products.push(cust_prod);
-    return true;
-}
+  const p=this.products.find(p=>p.name==product.name)
+  if(!p || product.stock==0 || product.stock<count){
+      return false;
+  }
+  else{
+          
+      p.stock-=count ;
+      this.balance+=p.price*count;
+      this.customer_products.push(new CustomerProducts(customer_id, p, count));
+      return true;
+  }
   }
 
 
   returnProduct(customer_id, product, count){
    
     // Add your code here
-let i=0;
-while(this.customer_products[i])
+  const record=this.customer_products.find(c=>c.products.name==product.name && c.customer_id==customer_id);
+  if(!record || count>record.count){
+    return false;
+  }
+  else{
+    const p=this.products.find(p=>p.name==product.name);
+    p.stock+=count;
+    this.balance-=p.price*count;
+    if(record.count>count){
+      record.count-=count;
+    }
+    else{
+      this.customer_products.remove(this.customer_products.findIndex(r=>r=record));
+    }
+  }
   }
 
 
   getCurrentBalance(){
 
     // get the current balance at cafe
-
+    return this.balance;
   }
 
 }
