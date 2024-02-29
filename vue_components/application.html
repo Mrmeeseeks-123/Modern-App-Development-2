@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello world</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <table>
+        number of messages posted:{{global_count}}
+        <tr>
+            <td><message_board title="a's board" v-on:add-to-global-count="global_count_func"></message_board></td>
+            <td><message_board title="b's board" v-on:add-to-global-count="global_count_func"></message_board></td>
+            <td><message_board title="c's board" v-on:add-to-global-count="global_count_func"></message_board></td>
+            
+        </tr>
+      </table> 
+    </div>
+</body>
+<script type="text/javascript" src="application.js"></script>
+</html>
