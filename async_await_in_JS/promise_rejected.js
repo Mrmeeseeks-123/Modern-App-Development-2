@@ -6,5 +6,7 @@ async function say_hello(){
         },2000);
     })
 }
-say_hello().then((v)=>console.log(v)).catch(e=>{console.log("got error");
-                                                    console.log(e)});
+say_hello()
+.then((v)=>console.log(v))
+.catch(e=>{console.log("got error");
+             console.log(e)});
