@@ -1,0 +1,3 @@
+before function call
+after function call
+async hello
