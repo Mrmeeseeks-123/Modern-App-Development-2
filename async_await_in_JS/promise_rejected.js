@@ -2,7 +2,7 @@ async function say_hello(){
     return new Promise((resolve,reject)=>{
         //resolve after 2 seconds
         setTimeout(function(){
-           reject("async hello");
+           reject("reject: async hello");
         },2000);
     })
 }
