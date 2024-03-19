@@ -1,50 +1,20 @@
-Response {
-  [Symbol(realm)]: null,
-  [Symbol(state)]: {
-    aborted: false,
-    rangeRequested: false,
-    timingAllowPassed: true,
-    requestIncludesCredentials: true,
-    type: 'default',
-    status: 404,
-    timingInfo: {
-      startTime: 62.947455,
-      redirectStartTime: 0,
-      redirectEndTime: 0,
-      postRedirectStartTime: 62.947455,
-      finalServiceWorkerStartTime: 0,
-      finalNetworkResponseStartTime: 0,
-      finalNetworkRequestStartTime: 0,
-      endTime: 0,
-      encodedBodySize: 0,
-      decodedBodySize: 0,
-      finalConnectionTimingInfo: null
-    },
-    cacheState: '',
-    statusText: 'NOT FOUND',
-    headersList: HeadersList {
-      cookies: null,
-      [Symbol(headers map)]: [Map],
-      [Symbol(headers map sorted)]: null
-    },
-    urlList: [ URL {} ],
-    body: { stream: undefined }
+success {
+  args: {},
+  data: '{"name":"chinmay","city":"agra"}',
+  files: {},
+  form: {},
+  headers: {
+    Accept: '*/*',
+    'Accept-Encoding': 'br, gzip, deflate',
+    'Accept-Language': '*',
+    'Content-Length': '32',
+    'Content-Type': 'application/json',
+    Host: 'httpbin.org',
+    'Sec-Fetch-Mode': 'cors',
+    'User-Agent': 'node',
+    'X-Amzn-Trace-Id': 'Root=1-65f9d094-3a7cee293db3b83806d850c5'
   },
-  [Symbol(headers)]: HeadersList {
-    cookies: null,
-    [Symbol(headers map)]: Map(7) {
-      'date' => [Object],
-      'content-type' => [Object],
-      'content-length' => [Object],
-      'connection' => [Object],
-      'server' => [Object],
-      'access-control-allow-origin' => [Object],
-      'access-control-allow-credentials' => [Object]
-    },
-    [Symbol(headers map sorted)]: null
-  }
+  json: { city: 'agra', name: 'chinmay' },
+  origin: '223.233.72.124',
+  url: 'https://httpbin.org/post'
 }
-response not ok
-in catch ReferenceError: reponse is not defined
-    at /home/abcd/MAD2/fetch/fetch.js:9:47
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
