@@ -1,20 +1,20 @@
-success {
+{
   args: {},
-  data: '{"name":"chinmay","city":"agra"}',
+  data: '',
   files: {},
   form: {},
   headers: {
     Accept: '*/*',
     'Accept-Encoding': 'br, gzip, deflate',
     'Accept-Language': '*',
-    'Content-Length': '32',
+    'Content-Length': '0',
     'Content-Type': 'application/json',
     Host: 'httpbin.org',
     'Sec-Fetch-Mode': 'cors',
     'User-Agent': 'node',
-    'X-Amzn-Trace-Id': 'Root=1-65f9d094-3a7cee293db3b83806d850c5'
+    'X-Amzn-Trace-Id': 'Root=1-65fafb7b-5cc82600397bcb7557c7ce4e'
   },
-  json: { city: 'agra', name: 'chinmay' },
-  origin: '223.233.72.124',
+  json: null,
+  origin: '223.233.71.211',
   url: 'https://httpbin.org/post'
 }
