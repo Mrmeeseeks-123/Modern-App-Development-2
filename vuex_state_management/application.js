@@ -25,6 +25,7 @@ Lorem Ipsum के अंश कई रूप में उपलब्ध ह�
 const messageboard = Vue.component("message_board", {
     props: ["title"],
     template: `<div>
+    
     <h4>{{title}}</h4>
    <p> Your name:<input type="text" v-model="visitor_name"></p>
       <p>  Your message:<input type="text" v-model="visitor_message"></p>
@@ -74,12 +75,12 @@ const messageboard = Vue.component("message_board", {
             return this.messages.length;
         }
     },
-   // mounted: async function () {
-        //using mount hook to load old messages from an api that returns "old_message_example.json"
-       // r = await fetch("http://localhost:8000/old_message_example.json");
-       // data = await r.json();
-       // this.messages = data;
-    //}
+    // mounted: async function () {
+    //     //using mount hook to load old messages from an api that returns "old_message_example.json"
+    //     r = await fetch("http://localhost:8000/old_message_example.json");
+    //     data = await r.json();
+    //     this.messages = data;
+    // }
 })
 
 const routes=[
