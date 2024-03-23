@@ -2,12 +2,12 @@ Vue.component("message_board", {
     props:["title"],
     template: `<div>
     <h4>{{title}}</h4>
-   <p> Your name:<input type="text" v-model="visitor_name"><p>
-      <p>  Your message:<input type="text" v-model="visitor_message"><p>
-       <p> <button v-on:click="sayhi">say hi</button><p>
+   <p> Your name:<input type="text" v-model="visitor_name"></p>
+      <p>  Your message:<input type="text" v-model="visitor_message"></p>
+       <p> <button v-on:click="sayhi">say hi</button></p>
         <ul>
             <li v-for="message in messages"> {{message["visitor_name"]}} : {{message["visitor_message"]}}</li>
-        </ul>
+        </ul>   
         </div>
     `,
 
