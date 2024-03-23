@@ -1,9 +1,13 @@
 const store=new Vuex.Store({
     state: {
         global_count:0
-    }
-
-})
+    },
+    mutations:{
+        increment_global_count: function(state){
+            state.global_count++;
+        }
+        }
+    })
 const about =Vue.component("about",{
     template:`<div>
     <h3> About </h3>
@@ -66,7 +70,8 @@ const messageboard = Vue.component("message_board", {
 
             this.visitor_name = "";
             this.visitor_message = "";
-            this.$emit("add-to-global-count")
+            //this.$emit("add-to-global-count")
+            this.$store.commit('increment_global_count');
         }
     },
     computed: {
