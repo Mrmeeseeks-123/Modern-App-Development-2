@@ -1,15 +1,34 @@
-const store=new Vuex.Store({
+const store = new Vuex.Store({
     state: {
-        global_count:0
+        global_count: 0
     },
-    mutations:{
-        increment_global_count: function(state){
+    mutations: {
+        increment_global_count: function (state) {
             state.global_count++;
         }
+    },
+    getters: {
+        get_global_count: function (state) {
+            return state.global_count.toLocaleString("en-IN", {
+                minimumIntegerDigits: 2,
+                useGrouping: false
+            })
         }
-    })
-const about =Vue.component("about",{
-    template:`<div>
+    },
+    actions: {
+        send_first_then_call_increment: function (context) {
+            //fetch or ajax call
+
+            //if success then you can call commit on mutation
+            context.commit('increment_global_count');
+            //on failure do something else
+
+
+        }
+    }
+})
+const about = Vue.component("about", {
+    template: `<div>
     <h3> About </h3>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque accumsan, tortor eu fringilla hendrerit, nunc metus luctus massa, sit amet aliquam magna dolor ac magna. Integer nec quam feugiat, viverra eros id, tincidunt arcu. Nullam ipsum purus, suscipit ac neque sed, lacinia maximus nibh. Pellentesque tortor mauris, sagittis non suscipit quis, consequat posuere ante. Morbi eget sagittis mauris. Nam quis facilisis leo. Nullam at nunc ut urna scelerisque semper ac tincidunt libero. Donec eget purus at metus tempus tincidunt eu sed erat. Phasellus at scelerisque sapien. Aenean nulla mi, vestibulum id iaculis sit amet, laoreet eget ipsum.<p>
@@ -71,7 +90,12 @@ const messageboard = Vue.component("message_board", {
             this.visitor_name = "";
             this.visitor_message = "";
             //this.$emit("add-to-global-count")
-            this.$store.commit('increment_global_count');
+
+            //using mutation
+            //this.$store.commit('increment_global_count');
+
+            //using action instead of mutation
+            this.$store.dispatch("send_first_then_call_increment");
         }
     },
     computed: {
@@ -87,22 +111,25 @@ const messageboard = Vue.component("message_board", {
     // }
 })
 
-const routes=[
-    {path:'/',component:messageboard,props:{"title":"abcd"}},{path:'/privacy-policy',component:privacypolicy},{path:'/about',component:about}
+const routes = [
+    { path: '/', component: messageboard, props: { "title": "abcd" } }, { path: '/privacy-policy', component: privacypolicy }, { path: '/about', component: about }
 ];
-const router=new VueRouter(
-    {routes
+const router = new VueRouter(
+    {
+        routes
     }
 )
 
 
 var app = new Vue({
     el: "#app",
-    router:router,
-    store:store,
-    computed:{
-        super_count:function(){
-            return store.state.global_count;
+    router: router,
+    store: store,
+    computed: {
+        super_count: function () {
+            //return store.state.global_count;
+            //using getters
+            return store.getters.get_global_count;
         }
     }
-    })
+})
