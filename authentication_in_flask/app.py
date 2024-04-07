@@ -1,6 +1,6 @@
 from flask import Flask,render_template 
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager,login_user,current_user,logout_user
+from flask_login import LoginManager,login_user,current_user,logout_user,UserMixin,login_required
 
 app=Flask(__name__)
 
@@ -15,7 +15,7 @@ login_manager.init_app(app)
 
 app.app_context().push()
 
-class User(db.Model):
+class User(db.Model,UserMixin):
     id=db.Column(db.Integer,primary_key=True)
     username=db.Column(db.String(30),unique=True,nullable=False)
 
@@ -40,17 +40,17 @@ def user_login(name):
     login_user(this_user) #TO SAVE USER CREDENTIALS IN THE SESSION 
     return "user logged in:" + this_user.username
 
-
 @app.route("/all_articles")
+@login_required
 def all_articles():
     articles=Article.query.filter_by(author=current_user.id).all()
     return render_template("user_articles.html",articles=articles)
     
 @app.route("/logout")
+@login_required    
 def user_logout():
     logout_user()
     return "user logged out"
 
 if __name__=="__main__":
-    with app.app_context():
-        db.create_all()
+    app.run(debug=True)
