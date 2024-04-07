@@ -4,7 +4,7 @@ from flask_login import LoginManager,login_user,current_user,logout_user
 
 app=Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"]="sqlite://logindata.sqlite3"
+app.config["SQLALCHEMY_DATABASE_URI"]="sqlite:///logindata.sqlite3"
 app.config['SECRET_KEY']="somerandomsecretstring"
 
 db=SQLAlchemy()
@@ -15,11 +15,11 @@ login_manager.init_app(app)
 
 app.app_context().push()
 
-class User(db.model):
+class User(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     username=db.Column(db.String(30),unique=True,nullable=False)
 
-class Article(db.model):
+class Article(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     title=db.Column(db.String(30),unique=True,nullable=False)
     desc=db.Column(db.String(),nullable=False)
@@ -51,3 +51,6 @@ def user_logout():
     logout_user()
     return "user logged out"
 
+if __name__=="__main__":
+    with app.app_context():
+        db.create_all()

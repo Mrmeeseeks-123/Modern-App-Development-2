@@ -1,0 +1,3 @@
+!#/bin/bash
+
+python3 -c "from app import *;db.create_all();u1=User(username='username1');u2=User(username='username2');db.session.add_all([u1,u2]);db.session.commit();a1=Article(title='article1',desc='this a very good article',author=u1.id);a2=Article(title='article2',desc='another article from user1',author=u1.id);a3=Article(title='article_title_yo',desc='yo whats up this a lit article',author=u2.id);db.session.add_all([a1,a2,a3]);db.session.commit()"
